@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main() {
+    int queue[] = {98, 183, 37, 122, 14, 124, 65, 67}, head = 53, i, total = 0;
+    for(i = 0; i < 8; i++) {
+        total += abs(queue[i] - head);
+        head = queue[i];
+    }
+    printf("Total head movement: %d\n", total);
+    return 0;
+}

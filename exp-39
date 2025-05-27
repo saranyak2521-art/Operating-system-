@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+int cmp(const void *a, const void *b) { return *(int*)a - *(int*)b; }
+int main() {
+    int queue[] = {98, 183, 37, 122, 14, 124, 65, 67}, n=8, head=53, total=0, i;
+    qsort(queue, n, sizeof(int), cmp);
+    for(i = 0; i < n && queue[i] < head; i++);
+    for(int j = i; j < n; j++) { total += abs(queue[j]-head); head = queue[j]; }
+    total += (199-head) + 199; head = 0;
+    for(int j = 0; j < i; j++) { total += abs(queue[j]-head); head = queue[j]; }
+    printf("Total head movement: %d\n", total);
+    return 0;
+}

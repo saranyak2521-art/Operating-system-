@@ -1,0 +1,22 @@
+#include <stdio.h>
+#define F 3
+int main() {
+    int ref[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2}, n=13;
+    int f[F], use[F], i, j, k, pf = 0;
+    for(i = 0; i < F; i++) f[i] = -1;
+    for(i = 0; i < n; i++) {
+        int hit = 0;
+        for(j = 0; j < F; j++) if(f[j] == ref[i]) hit = 1;
+        if(hit) continue;
+        int idx = -1;
+        for(j = 0; j < F; j++) {
+            use[j] = 0;
+            for(k = i+1; k < n; k++) if(f[j] == ref[k]) { use[j]=k; break; }
+            if(k == n) { idx = j; break; }
+        }
+        if(idx == -1) for(j=0,k=0;j<F;j++) if(use[j]>use[k]) k=j; else k=idx=j;
+        f[idx] = ref[i]; pf++;
+    }
+    printf("Page Faults: %d\n", pf);
+    return 0;
+}

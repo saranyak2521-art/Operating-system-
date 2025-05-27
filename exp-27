@@ -1,0 +1,11 @@
+#include <dirent.h>
+#include <stdio.h>
+int main() {
+    DIR *d = opendir(".");
+    struct dirent *de;
+    while ((de = readdir(d)))
+        if(de->d_type == DT_REG) // Regular file
+            printf("%s\n", de->d_name);
+    closedir(d);
+    return 0;
+}

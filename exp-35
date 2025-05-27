@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main() {
+    int indexBlock[5] = {12, 5, 18, 9, 20}, i;
+    printf("Indexed Allocation:\n");
+    for(i = 0; i < 5; i++)
+        printf("Record %d -> Block %d\n", i+1, indexBlock[i]);
+    printf("Access record 4 via index block[3] = %d\n", indexBlock[3]);
+    return 0;
+}

@@ -1,0 +1,15 @@
+#include <pthread.h>
+#include <stdio.h>
+void* threadFunc(void* arg) {
+    printf("Thread %ld running\n", pthread_self());
+    pthread_exit(NULL);
+}
+int main() {
+    pthread_t t1, t2;
+    pthread_create(&t1, NULL, threadFunc, NULL);
+    pthread_create(&t2, NULL, threadFunc, NULL);
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+    printf("Equal? %s\n", pthread_equal(t1, t2) ? "Yes" : "No");
+    return 0;
+}

@@ -1,0 +1,12 @@
+#include <stdio.h>
+#define F 3
+int main() {
+    int pages[] = {1,2,3,4,1,2,5,1,2,3,4,5}, n=12, frame[F]={-1}, i, j=0, pf=0;
+    for(i = 0; i < n; i++) {
+        int hit = 0;
+        for(int k = 0; k < F; k++) if(frame[k] == pages[i]) hit = 1;
+        if(!hit) { frame[j] = pages[i]; j = (j+1)%F; pf++; }
+    }
+    printf("Page Faults: %d\n", pf);
+    return 0;
+}

@@ -1,0 +1,12 @@
+#include <stdio.h>
+struct Block { int data, next; };
+int main() {
+    struct Block disk[5] = {{101, 1}, {102, 2}, {103, 3}, {104, 4}, {105, -1}};
+    int start = 0;
+    printf("Linked Allocation:\n");
+    while(start != -1) {
+        printf("Block: %d, Data: %d\n", start, disk[start].data);
+        start = disk[start].next;
+    }
+    return 0;
+}

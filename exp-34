@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main() {
+    int fileSize = 5, start = 10;
+    printf("Sequential Allocation:\n");
+    for(int i = 0; i < fileSize; i++)
+        printf("Block %d -> Record %d\n", start + i, i + 1);
+    printf("To access record 4, read blocks 10 to 13\n");
+    return 0;
+}

@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main() {
+    FILE *fp = fopen("test.txt", "w");
+    fprintf(fp, "Writing to a file\n");
+    fclose(fp);
+
+    fp = fopen("test.txt", "r");
+    char c;
+    while ((c = fgetc(fp)) != EOF) putchar(c);
+    fclose(fp);
+
+    remove("test.txt");
+    printf("\nFile deleted.\n");
+    return 0;
+}
